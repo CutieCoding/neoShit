@@ -1,6 +1,9 @@
+import datetime
 import os
 import platform
+import psutil
 import socket
+import time
 import tkinter # gay
 
 def topBit(): # gets the first line and makes it look like how it does in neofetch
@@ -22,7 +25,7 @@ def getKernel():
     return (platform.version())
 
 def getUptime():
-    return ("*shrugs shoulders*") # all options that support windows use ctypes, gross
+    return str(datetime.timedelta(seconds=(time.time() - psutil.boot_time()))) # this is weird af but it works
 
 def getTotalPackages():
     return ("*shrugs shoulders*") #`help("modules")` takes 999 years so i need to figure out how to do this
