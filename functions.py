@@ -31,9 +31,10 @@ def getShell():
     return (os.environ.get("SHELL")) # returns "None" for me on windows, maybe works on linux need to check
 
 def getScreenRes(): # stolen from stackoverflow, i hate tk
-    root = tkinter.Tk() # I ONLY JUST REALISED IT OPENS A WHOLE FUCKING TK WINDOW
+    root = tkinter.Tk()
     screen_width = str(root.winfo_screenwidth())
     screen_height = str(root.winfo_screenheight())
+    root.destroy() # so there isnt a whole ass tk window on screen
     return (screen_width + " X " + screen_height) # shit way to do it, dont care
 
 def getCPU(): # really shit, should find a better way
