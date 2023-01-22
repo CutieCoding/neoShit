@@ -3,6 +3,7 @@ import os
 import platform
 import psutil
 import socket
+import subprocess
 import time
 import tkinter # gay
 
@@ -42,3 +43,13 @@ def getScreenRes(): # stolen from stackoverflow, i hate tk
 
 def getCPU(): # really shit, should find a better way
     return platform.processor()
+
+def getGPU(): # stolen from stackoverflow, only supports nvidia gpus lmao
+    line_as_bytes = subprocess.check_output("nvidia-smi -L", shell=True)
+    line = line_as_bytes.decode("ascii")
+    _, line = line.split(":", 1)
+    line, _ = line.split("(")
+    return line.strip()
+
+def getRAM(): # this is absolutely awful but it works
+    return (str(int(psutil.virtual_memory().used / 1024 / 1024)) + " MiB / " + str(int(psutil.virtual_memory().total / 1024 / 1024)) + " MiB")
