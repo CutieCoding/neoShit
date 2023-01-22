@@ -11,4 +11,4 @@ print("Packages:", getTotalPackages())
 print("Shell:", getShell())
 print("Resolution:", getScreenRes())
 print("CPU:", getCPU())
-input()
+input() # should remove this later
