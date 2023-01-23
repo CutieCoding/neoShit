@@ -28,8 +28,10 @@ def getKernel():
 def getUptime():
     return str(datetime.timedelta(seconds=(time.time() - psutil.boot_time()))) # this is weird af but it works
 
-def getTotalPackages():
-    return ("*shrugs shoulders*") #`help("modules")` takes 999 years so i need to figure out how to do this
+def getTotalPackages(): # my friend made this, shoutout to him
+    ipackages = subprocess.check_output(["pip", "freeze"])
+    packagecount = len(ipackages.splitlines())
+    return packagecount
 
 def getShell():
     return (os.environ.get("SHELL")) # returns "None" for me on windows, maybe works on linux need to check

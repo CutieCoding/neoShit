@@ -13,4 +13,5 @@ print("Resolution:", getScreenRes())
 print("CPU:", getCPU())
 print("GPU:", getGPU())
 print("RAM:", getRAM())
+
 input() # should remove this later
